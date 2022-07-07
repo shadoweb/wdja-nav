@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="wdja" author="wdja">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[index]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div class="content">
+  <div class="left">
+    {$=ii_ireplace('global.module.sidebar','tpl')}
+  </div>
+  <div class="right">
+    <div class="sitetitle"><i class="iconfont icon-viewgrid"></i>网站导航</div>
+    {$=mm_get_advert('index')}
+    <div class="msite">
+      <div class="box">
+        {$=vv_isort('site', 'tpl=list-sort')}
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>
+{$=mm_web_foot($GLOBALS['nfoot'])}]]></tpl_default>
+    </item>
+    
+    
+    
+    <item>
+      <name><![CDATA[sidebar]]></name>
+      <tpl_default><![CDATA[<div class="box">
+  {$=mm_get_sidebar('sort')}
+  {$=mm_get_sidebar('new')}
+  {$=mm_get_sidebar('hot')}
+</div>
+<div class="box">
+  {$=mm_get_sidebar('tag')}
+  {$=mm_get_sidebar('hotsearch')}
+</div>]]></tpl_default>
+    </item>
+    
+    <item>
+      <name><![CDATA[sidebar-search]]></name>
+      <tpl_default><![CDATA[  <aside id="search-2" class="widget widget_search">
+   <div id="searchbar">
+    <form method="get" id="searchform" name="search" action="{$=ii_get_actual_route('search')}"> 
+     <input type="hidden" name="type" value="list">
+     <input type="text" value="" name="keyword" id="s" placeholder="{$=ii_itake('global.lng_config.keyword', 'lng')}" required="" /> 
+     <button type="submit" id="searchsubmit">{$=ii_itake('global.lng_config.search','lng')}</button>
+    </form>
+   </div>
+   <div class="clear"></div>
+  </aside>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[sidebar-sort]]></name>
+      <tpl_default><![CDATA[<div class="widget">
+  <h2><i class="iconfont icon-viewgrid"></i>{$=ii_itake('global.lng_config.sort','lng')}</h2>
+  <ul>
+    {$=vv_isort('site', 'tpl=sidebar-sort')}
+  </ul>
+</div>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[sidebar-new]]></name>
+      <tpl_default><![CDATA[<div class="widget">
+  <h2><i class="iconfont icon-viewgrid"></i>最新链接</h2>
+  <ul>
+      <jtbc-view data="{$=ii_htmlencode(json_encode(vv_ifetch('genre=site;field=id,topic;order=time;limit=10;')))}">
+        <template>
+          <li><a href="${$url}" rel="bookmark">${$topic}</a></li>
+        </template>
+      </jtbc-view>
+  </ul>
+</div>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[sidebar-hot]]></name>
+      <tpl_default><![CDATA[<div class="widget">
+  <h2><i class="iconfont icon-viewgrid"></i>热门链接</h2>
+  <ul>
+        {$=vv_itransfer('hot', 'sidebar-list-hot', 'topx=10;tnum=30;genre=site')}
+  </ul>
+</div>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[sidebar-tag]]></name>
+      <tpl_default><![CDATA[<div class="widget">
+  <h2><i class="iconfont icon-viewgrid"></i>热门标签</h2>
+  <ul>
+      {$=api_tags_all('30')}
+  </ul>
+</div>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[sidebar-roll]]></name>
+      <tpl_default><![CDATA[  <div class="sidebar-roll">
+   <aside id="custom_html-2" class="widget_text widget widget_custom_html">
+    <h3 class="widget-title"><i class="iconfont icon-viewgrid"></i>赞助商</h3>
+    <div class="textwidget custom-html-widget">
+     {$=ii_itake('global.support/themes/{$nskin}:extend.ad-sidebar','lng')}
+    </div>
+    <div class="clear"></div>
+   </aside>
+  </div>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[ad-index]]></name>
+      <tpl_default><![CDATA[<div class="ad-site">
+  <div class="ad-archive-p">
+{$=ii_itake('global.support/themes/{$nskin}:extend.ad-index','lng')}
+  </div>
+</div>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[ad-list]]></name>
+      <tpl_default><![CDATA[<div class="ad-site">
+  <div class="ad-archive-p">
+{$=ii_itake('global.support/themes/{$nskin}:extend.ad-list','lng')}
+  </div>
+</div>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[ad-detail]]></name>
+      <tpl_default><![CDATA[<div class="ad-site">
+  <div class="ad-single-p">
+{$=ii_itake('global.support/themes/{$nskin}:extend.ad-detail','lng')}
+  </div>
+</div>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[sidebar-hotsearch]]></name>
+      <tpl_default><![CDATA[<div class="widget">
+  <h2><i class="iconfont icon-viewgrid"></i>热门搜索</h2>
+  <ul>
+        {$=search_data_view_all(35)}
+  </ul>
+</div>]]></tpl_default>
+    </item>
+  </item_list>
+</xml>

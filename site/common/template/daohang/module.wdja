@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="wdja" author="wdja">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[list]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div class="content">
+  <div class="left">
+    {$=ii_ireplace('global.module.sidebar','tpl')}
+  </div>
+  <div class="right">
+    <div class="sitetitle">{$=vv_inavigation('{$genre}', 'classid={$classid};strers=module;strurl={$genre}')}</div>
+    <div class="msite">
+      <div class="list">
+        <div class="box">
+          {$=mm_get_advert('list')}
+          <ul>
+            {@recurrence_ida}
+            <li><a href="{$=ii_iurl('detail', {$id}, $GLOBALS['nurltype'])}">{$topic}</a></li>
+            {@recurrence_ida}
+          </ul>
+          <div id="cutepage">{$cpagestr}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>
+{$=mm_web_foot($GLOBALS['nfoot'])}]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[detail]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div class="content">
+  <div class="left">
+    {$=ii_ireplace('global.module.sidebar','tpl')}
+  </div>
+  <div class="right">
+    <div class="sitetitle">{$=vv_inavigation('{$genre}', 'classid={$class};strers=module;strurl={$genre}')}</div>
+    <div class="msite">
+      <div class="detail">
+        <h1 class="">{$topic}</h1>
+        <div class="params">
+          <a href="http://www.besseo.com" target="_blank">
+            <img src="{$=#nurlpre}/{$=#ngenre}/{$image}" width="130" height="110" alt="{$topic}" class="wthumb">
+          </a>
+          <ul class="siteitem">
+            <li><i class="iconfont icon-internetexplorer"></i><strong>{$=ii_itake('config.weburl','lng')}:</strong>
+              <a href="{$weburl}" target="_blank" class="visit">
+                <font color="#008000">{$weburl}</font></a>
+            </li>
+            <li><i class="iconfont icon-heart"></i><strong>{$=ii_itake('global.lng_config.count','lng')}:</strong>
+              <a href="{$urls}" target="_blank" class="visit">
+                <font color="#008000">{$count}</font></a>
+            </li>
+            <li><i class="iconfont icon-notetext"></i><strong>{$=ii_itake('global.lng_config.content','lng')}:</strong>
+              <font color="#008000">{$description}</font>
+            </li>
+          </ul>
+          <div>{$=api_tags_list({$id})}</div>
+        </div>
+          {$=mm_get_advert('detail')}
+        {$=mm_encode_content(mm_cutepage_content(api_tags_replace_tags($GLOBALS['RS_content'])))}
+        <div>{$=mm_cutepage_content_page_sel($GLOBALS['RS_content'], '{$id}')}</div>
+        <div class="detail_list">
+          {$=vv_itransfer('new', 'global.site:module.detail_list_class', 'topx=10;tnum=30;genre=site;osql= and #_class=\'{$class}\'')}
+          {$=vv_itransfer('rand', 'global.site:module.detail_list_more', 'topx=10;tnum=30;genre=site;')}
+        </div>
+       {$=mm_get_detail_check('{$genre}','{$id}','{$url}')}
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>
+{$=mm_web_foot($GLOBALS['nfoot'])}]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[detail_list_class]]></name>
+      <tpl_default><![CDATA[  <div style="width:48%;float:left;">
+   <h3 style="height: 40px;line-height: 40px;border-bottom: 1px solid #ddd;"><i class="iconfont icon-viewgrid"></i>相关网站</h3>
+    <ul>
+       {@}<li><i class="iconfont icon-chevronright"></i><a href="{$=ii_curl('{$baseurl}', ii_iurl('detail', {$id}, {$urltype}))}" rel="bookmark">{$topic}</a></li>{@}
+    </ul>
+  </div>
+      ]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[detail_list_more]]></name>
+      <tpl_default><![CDATA[  <div style="width:48%;float:right;">
+   <h3 style="height: 40px;line-height: 40px;border-bottom: 1px solid #ddd;"><i class="iconfont icon-viewgrid"></i>更多网站</h3>
+    <ul>
+       {@}<li><i class="iconfont icon-chevronright"></i><a href="{$=ii_curl('{$baseurl}', ii_iurl('detail', {$id}, {$urltype}))}" rel="bookmark">{$topic}</a></li>{@}
+    </ul>
+  </div>
+      ]]></tpl_default>
+    </item>
+    
+  </item_list>
+</xml>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="wdja" author="wdja">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[detail]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div class="content">
+  <div class="left">
+    {$=ii_ireplace('global.module.sidebar','tpl')}
+  </div>
+  <div class="right">
+    <div class="sitetitle">{$=vv_inavigation('{$genre}', 'strers=module;strurl={$genre}')}</div>
+    <div class="msite">
+      <div class="detail">
+        <h1 class="">{$topic}</h1>
+        {$=api_tags_list({$id})}
+        {$=mm_encode_content(mm_cutepage_content(api_tags_replace_tags($GLOBALS['RS_content'])))}
+        <div>{$=mm_cutepage_content_page_sel($GLOBALS['RS_content'], '{$id}')}</div>
+        {$=vv_itransfer('new', 'global.aboutus:module.detail-list', 'topx=10;tnum=30;genre=aboutus;osql= and #id != \'{$id}\' and #_lng=\'' . $GLOBALS['nlng'] . '\'')}
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>
+{$=mm_web_foot($GLOBALS['nfoot'])}]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[detail-list]]></name>
+      <tpl_default><![CDATA[<div class="detail_list">
+  <div>
+    <h3 style="height: 40px;line-height: 40px;border-bottom: 1px solid #ddd;"><i class="iconfont icon-viewgrid"></i>更多内容</h3>
+    <ul>
+      {@}<li style="float:left;width:50%;"><i class="iconfont icon-chevronright"></i><a href="{$=ii_curl('{$baseurl}', ii_iurl('detail', {$id}, {$urltype}))}" rel="bookmark">{$topic}</a></li>{@}
+    </ul>
+  </div>
+</div>
+]]></tpl_default>
+    </item>
+  </item_list>
+</xml>

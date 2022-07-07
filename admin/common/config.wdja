@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="wdjafgf" author="wdja">
+  <configure>
+    <item varstr="morder" strvalue="support,expansion,aboutus,site,tags,message,check" />
+    <item varstr="norder" strvalue="cache,note,xml,configure,upload,user,userlog" />
+  </configure>
+</xml>

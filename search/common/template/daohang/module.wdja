@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="wdja" author="wdja">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[list]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+
+<div class="search">
+  <form method="get" id="searchform" name="search" action="{$=ii_get_actual_route('search')}"> 
+    <input type="hidden" name="type" value="list">
+    <input type="text" value="" name="keyword" id="s" placeholder="{$=ii_itake('global.lng_config.keyword', 'lng')}" required="" /> 
+    <button type="submit" id="searchsubmit">{$=ii_itake('global.lng_config.search','lng')}</button>
+  </form>
+</div>
+<div class="content">
+  <div class="left">
+    {$=ii_ireplace('global.module.sidebar','tpl')}
+  </div>
+  <div class="right">
+    <div class="sitetitle">{$=vv_inavigation('{$genre}', 'strers=module')}</div>
+    <div class="msite">
+      <div class="list">
+        <div class="box">
+          <ul>
+            {@recurrence_ida}
+            <li class="cat-title" style="float:left;width:50%;"><i class="iconfont icon-chevronright"></i> {$module}<a href="{$url}" rel="bookmark">{$topic}</a></li>
+            {@recurrence_ida}
+          </ul>
+          <div id="cutepage">{$cpagestr}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>
+{$=mm_web_foot($GLOBALS['nfoot'])}]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[index]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div class="search">
+  <form method="get" id="searchform" name="search" action="{$=ii_get_actual_route('search')}"> 
+    <input type="hidden" name="type" value="list">
+    <input type="text" value="" name="keyword" id="s" placeholder="{$=ii_itake('global.lng_config.keyword', 'lng')}" required="" /> 
+    <button type="submit" id="searchsubmit">{$=vv_inavigation('{$genre}', 'strers=module')}</button>
+  </form>
+</div>
+<div class="content">
+  <div class="left">
+    {$=ii_ireplace('global.module.sidebar','tpl')}
+  </div>
+  <div class="right">
+    <div class="sitetitle">{$=vv_inavigation('{$genre}', 'strers=module')}</div>
+    <div class="msite">
+      <div class="box">
+        <div class="site">
+          <ul>
+            <li class="cat-title" style="float:left;width:50%;">请搜索</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>
+{$=mm_web_foot($GLOBALS['nfoot'])}]]></tpl_default>
+    </item>
+  </item_list>
+</xml>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="wdja" author="wdja">
+  <configure>
+    <node>item</node>
+    <field>disinfo,chinese</field>
+    <base>language_list</base>
+  </configure>
+  <language_list>
+    <item>
+      <disinfo><![CDATA[weburl]]></disinfo>
+      <chinese><![CDATA[网址URL]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[webicon]]></disinfo>
+      <chinese><![CDATA[网址图标]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[webtitle]]></disinfo>
+      <chinese><![CDATA[网址标题]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[webkeywords]]></disinfo>
+      <chinese><![CDATA[网址关键词]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[webdescription]]></disinfo>
+      <chinese><![CDATA[网址描述]]></chinese>
+    </item>
+  </language_list>
+</xml>
