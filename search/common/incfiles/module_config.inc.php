@@ -6,7 +6,7 @@
 //****************************************************
 function wdja_cms_module_list()
 {
-  global $variable,$ncreatefiletype;
+  global $variable;
   global $ngenre, $npagesize, $nlisttopx, $nlng, $nurlpre;
   global $nsearch_genre, $nsearch_field;
   global $nvalidate;
@@ -40,8 +40,7 @@ function wdja_cms_module_list()
     {
       $tsqlstr .= ii_cfnames($tfpre, $tnfield) . " as un_" . $tnfield . ",";
     }
-    if ($tgenre == 'forum') $tsid = ii_cfnames($tfpre, 'sid');
-    else  $tsid = $tidfield;
+    $tsid = $tidfield;
     $tsqlstr .= $tsid . " as un_sid," . ii_cfnames($tfpre, 'count') . " as un_count," . ii_cfnames($tfpre, 'time') . " as un_time,'" . $tgenre . "' as un_genre from " . $tdatabase . " where " . ii_cfnames($tfpre, 'hidden') . "=0 and " . ii_cfnames($tfpre, 'lng') . "='$nlng'";
     foreach ($tshkeywords as $key => $val)
     {
@@ -92,7 +91,6 @@ function wdja_cms_module_list()
     }
   $tmpstr = str_replace(WDJA_CINFO, $tmprstr, $tmpstr);
   $tmpstr = str_replace('{$urltype}', $turltype, $tmpstr);
-  $tmpstr = str_replace('{$createfiletype}', $tcreatefiletype, $tmpstr);
   $tmpstr = str_replace('{$cpagestr}', $tcp -> get_pagenum(), $tmpstr);
   $tmpstr = str_replace('{$keyword}', $tshkeyword, $tmpstr);
   $tmpstr = str_replace('{$genre}', $ngenre, $tmpstr);
