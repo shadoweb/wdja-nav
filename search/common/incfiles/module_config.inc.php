@@ -86,7 +86,6 @@ function wdja_cms_module_list()
       $tmptstr = str_replace('{$genre}', $trs['un_genre'], $tmptstr);
       $tmptstr = str_replace('{$module}', '<a href="'.$nurlpre.'/'.$trs['un_genre'].'">['.ii_itake('global.'.$trs['un_genre'].':module.channel_title', 'lng').']</a>', $tmptstr);
       $tmptstr = str_replace('{$url}', $nurlpre.'/'.$trs['un_genre'].'/'.ii_iurl('detail', ii_get_num($trs['un_id']), $turltype), $tmptstr);
-
       $tmprstr .= $tmptstr;
     }
   $tmpstr = str_replace(WDJA_CINFO, $tmprstr, $tmpstr);
